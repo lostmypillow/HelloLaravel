@@ -10,59 +10,38 @@
 
     <style>
         body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
             font-family: 'NeueHaasGroteskText Pro Regular', Arial, Helvetica, sans-serif;
         }
     </style>
 </head>
 
 <body>
+<main class="container-fluid">
+    <nav>
+        <ul>
+            <li> <?= "$greeting Wendy"; ?></li>
+        </ul>
+    </nav>
+    <h2>
+        <?= $message ?>
+    </h2>
+    <h2>Recommended Shows</h2>
+
+    <ul>
+
+        <?php foreach ($IndShows as $show): ?>
+            <li>
+                <?= $show ?>™
+            </li>
+
+        <?php endforeach; ?>
+
+        <?php ?>
+    </ul>
 
 
-<h1>
-    <?= "$greeting Wendy"; ?>
-</h1>
-<h2>
-    <?= $message ?>
-</h2>
-<h2>Recommended Shows</h2>
-
-<ul>
-
-    <?php foreach ($IndShows as $show): ?>
-        <li>
-            <?= $show ?>™
-        </li>
-
-    <?php endforeach; ?>
-
-    <?php ?>
-</ul>
-
-
-<ul>
-    <?php foreach ($showsDict as $show): ?>
-        <li>
-
-            <a href="<?= $show['purchaseUrl'] ?>">
-                <?= $show['name']; ?> (<?= $show['releaseYear'] ?>)
-            </a>
-
-
-        </li>
-    <?php endforeach; ?>
-</ul>
-
-<h3>Pike shows:</h3>
-<ul>
-
-    <?php foreach ($showsDict as $show): ?>
-        <?php if ($show['mainChar'] === 'Christopher Pike'): ?>
+    <ul>
+        <?php foreach ($showsDict as $show): ?>
             <li>
 
                 <a href="<?= $show['purchaseUrl'] ?>">
@@ -71,26 +50,45 @@
 
 
             </li>
-        <?php endif; ?>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
+    </ul>
 
-</ul>
-</ul>
+    <h3>Pike shows:</h3>
+    <ul>
 
-<h3>Shows after 2018</h3>
-<ul>
-    <?php foreach ($filteredShows as $show): ?>
-        <li>
+        <?php foreach ($showsDict as $show): ?>
+            <?php if ($show['mainChar'] === 'Christopher Pike'): ?>
+                <li>
 
-            <a href="<?= $show['purchaseUrl'] ?>">
-                <?= $show['name']; ?> (<?= $show['releaseYear'] ?>)
-            </a>
+                    <a href="<?= $show['purchaseUrl'] ?>">
+                        <?= $show['name']; ?> (<?= $show['releaseYear'] ?>)
+                    </a>
 
 
-        </li>
-    <?php endforeach; ?>
+                </li>
+            <?php endif; ?>
+        <?php endforeach; ?>
 
-</ul>
+    </ul>
+    </ul>
+
+    <h3>Shows after 2018</h3>
+    <ul>
+        <?php foreach ($filteredShows as $show): ?>
+            <li>
+
+                <a href="<?= $show['purchaseUrl'] ?>">
+                    <?= $show['name']; ?> (<?= $show['releaseYear'] ?>)
+                </a>
+
+
+            </li>
+        <?php endforeach; ?>
+
+    </ul>
+
+
+</main>
 
 
 </body>
